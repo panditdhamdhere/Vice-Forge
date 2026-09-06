@@ -1,40 +1,108 @@
-<svg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
   <defs>
-    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
-      <stop offset='0%' stop-color='#12081A'/>
-      <stop offset='100%' stop-color='#FF4D6D'/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#100818"/>
+      <stop offset="100%" stop-color="#2a1040"/>
     </linearGradient>
-    <radialGradient id='glow' cx='50%' cy='30%' r='60%'>
-      <stop offset='0%' stop-color='#FF4D6D' stop-opacity='0.55'/>
-      <stop offset='100%' stop-color='#12081A' stop-opacity='0'/>
+    <linearGradient id="skyline" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7cf5ff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7cf5ff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="28%" r="55%">
+      <stop offset="0%" stop-color="#7cf5ff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#100818" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="shirtGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b3a4a"/>
+      <stop offset="100%" stop-color="#100818"/>
+    </linearGradient>
   </defs>
-  <rect width='800' height='1000' fill='url(#bg)'/>
-  <rect width='800' height='1000' fill='url(#glow)'/>
-  <text x='40' y='80' font-family='Arial Black, sans-serif' font-size='42' fill='#F7F3E9' opacity='0.9' letter-spacing='8'>VERA</text>
-  <text x='40' y='120' font-family='Arial, sans-serif' font-size='18' fill='#F5EDE6' opacity='0.55'>VICE COAST COVER</text>
-  <!-- shoulders -->
-  <ellipse cx='400' cy='920' rx='280' ry='160' fill='#1B9AAA'/>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#halo)"/>
+
+  <!-- city skyline -->
+  <g opacity="0.55" fill="#100818">
+    <rect x="40" y="560" width="70" height="220"/>
+    <rect x="120" y="500" width="55" height="280"/>
+    <rect x="185" y="540" width="90" height="240"/>
+    <rect x="290" y="470" width="48" height="310"/>
+    <rect x="560" y="490" width="70" height="290"/>
+    <rect x="640" y="530" width="95" height="250"/>
+    <rect x="720" y="500" width="50" height="280"/>
+  </g>
+  <g fill="#7cf5ff" opacity="0.55">
+    <rect x="55" y="590" width="8" height="10"/><rect x="75" y="620" width="8" height="10"/>
+    <rect x="135" y="530" width="8" height="10"/><rect x="150" y="560" width="8" height="10"/>
+    <rect x="210" y="580" width="8" height="10"/><rect x="240" y="610" width="8" height="10"/>
+    <rect x="580" y="520" width="8" height="10"/><rect x="610" y="560" width="8" height="10"/>
+    <rect x="670" y="560" width="8" height="10"/><rect x="700" y="600" width="8" height="10"/>
+  </g>
+
+  <!-- film grain bars -->
+  <rect x="0" y="0" width="800" height="28" fill="#7cf5ff" opacity="0.12"/>
+  <rect x="0" y="972" width="800" height="28" fill="#7cf5ff" opacity="0.18"/>
+
+  <!-- identity label -->
+  <text x="36" y="72" font-family="Arial Black, Helvetica, sans-serif" font-size="54" fill="#7cf5ff" letter-spacing="10">VERA</text>
+  <text x="38" y="104" font-family="Arial, sans-serif" font-size="16" fill="#f4ebe1" opacity="0.55" letter-spacing="4">RADIO GHOST · VICE COAST</text>
+
+  <!-- shoulders / jacket -->
+  <path d="M120 1000 C180 780 250 720 400 720 C550 720 620 780 680 1000 Z" fill="url(#shirtGrad)"/>
+  <path d="M250 780 L320 720 L400 760 L480 720 L550 780" fill="none" stroke="#7cf5ff" stroke-width="3" opacity="0.35"/>
+
   <!-- neck -->
-  <rect x='355' y='620' width='90' height='120' rx='20' fill='#F1C27D'/>
+  <path d="M360 620 C370 700 430 700 440 620 L430 720 C410 760 390 760 370 720 Z" fill="#f1c27d"/>
+
   <!-- head -->
-  <ellipse cx='400' cy='480' rx='150' ry='180' fill='#F1C27D'/>
-  <!-- hair -->
-  <path d='M250 450 C260 280 540 280 550 450 C520 320 280 320 250 450 Z' fill='#4A2C0A'/>
-  <ellipse cx='400' cy='340' rx='160' ry='90' fill='#4A2C0A'/>
-  <!-- eyes -->
-  <ellipse cx='345' cy='480' rx='18' ry='12' fill='#1a1a1a'/>
-  <ellipse cx='455' cy='480' rx='18' ry='12' fill='#1a1a1a'/>
-  <circle cx='350' cy='478' r='5' fill='#fff' opacity='0.7'/>
-  <circle cx='460' cy='478' r='5' fill='#fff' opacity='0.7'/>
+  <ellipse cx="400" cy="485" rx="148" ry="178" fill="#f1c27d"/>
+  <!-- cheek shade -->
+  <ellipse cx="320" cy="520" rx="28" ry="36" fill="#000" opacity="0.08"/>
+  <ellipse cx="480" cy="520" rx="28" ry="36" fill="#000" opacity="0.08"/>
+
+  
+      <path d="M245 420 C250 270 550 270 555 420 C580 520 560 650 540 700 C500 640 300 640 260 700 C240 650 220 520 245 420 Z" fill="#3a2208"/>
+      <ellipse cx="400" cy="325" rx="170" ry="95" fill="#3a2208"/>
+    
+
   <!-- brows -->
-  <path d='M310 445 Q345 430 380 445' stroke='#4A2C0A' stroke-width='8' fill='none' stroke-linecap='round'/>
-  <path d='M420 445 Q455 430 490 445' stroke='#4A2C0A' stroke-width='8' fill='none' stroke-linecap='round'/>
+  <path d="M312 448 Q345 432 378 448" stroke="#3a2208" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <path d="M422 448 Q455 430 490 448" stroke="#3a2208" stroke-width="9" fill="none" stroke-linecap="round"/>
+
+  <!-- eyes -->
+  <ellipse cx="345" cy="488" rx="22" ry="14" fill="#faf6f0"/>
+  <ellipse cx="455" cy="488" rx="22" ry="14" fill="#faf6f0"/>
+  <ellipse cx="345" cy="490" rx="11" ry="12" fill="#1a1410"/>
+  <ellipse cx="455" cy="490" rx="11" ry="12" fill="#1a1410"/>
+  <circle cx="349" cy="486" r="3.5" fill="#fff" opacity="0.85"/>
+  <circle cx="459" cy="486" r="3.5" fill="#fff" opacity="0.85"/>
+
+  
+  <g fill="none" stroke="#7cf5ff" stroke-width="5" opacity="0.85">
+    <rect x="308" y="468" width="74" height="42" rx="10"/>
+    <rect x="418" y="468" width="74" height="42" rx="10"/>
+    <path d="M382 488 H418"/>
+    <path d="M308 485 H275"/>
+    <path d="M492 485 H525"/>
+  </g>
+
+  
+  <circle cx="252" cy="520" r="7" fill="#7cf5ff"/>
+  <circle cx="252" cy="538" r="4" fill="#7cf5ff" opacity="0.7"/>
+  
+
   <!-- nose -->
-  <path d='M400 490 L390 540 L410 540' stroke='#000' stroke-opacity='0.2' stroke-width='4' fill='none'/>
+  <path d="M400 500 L388 548 L412 548" stroke="#000" stroke-opacity="0.18" stroke-width="4" fill="none" stroke-linecap="round"/>
+
   <!-- mouth -->
-  <path d='M370 580 Q400 600 430 580' stroke='#000' stroke-opacity='0.35' stroke-width='5' fill='none' stroke-linecap='round'/>
-  <!-- accent bar -->
-  <rect x='0' y='940' width='800' height='60' fill='#F7F3E9' opacity='0.85'/>
-  <text x='40' y='978' font-family='Arial, sans-serif' font-size='22' fill='#0B1220' font-weight='700'>FORGE YOUR COVER</text>
+  <path d="M368 585 Q400 608 432 585" stroke="#b24a5a" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M375 586 Q400 598 425 586" fill="#b24a5a" opacity="0.35"/>
+
+  <!-- neon side strip -->
+  <rect x="0" y="180" width="10" height="420" fill="#7cf5ff" opacity="0.7"/>
+  <rect x="790" y="180" width="10" height="420" fill="#7cf5ff" opacity="0.35"/>
+
+  <!-- bottom stamp -->
+  <rect x="0" y="910" width="800" height="90" fill="#070b14" opacity="0.72"/>
+  <text x="36" y="948" font-family="Arial Black, sans-serif" font-size="28" fill="#7cf5ff" letter-spacing="6">COVER BASE</text>
+  <text x="36" y="978" font-family="Arial, sans-serif" font-size="16" fill="#f4ebe1" opacity="0.65" letter-spacing="3">READY FOR REACT IMAGE EDITOR</text>
 </svg>

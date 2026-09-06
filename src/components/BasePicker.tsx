@@ -17,7 +17,12 @@ export function BasePicker() {
   const active =
     uploadPreview != null
       ? null
-      : COVER_BASES.find((b) => b.id === selected) ?? COVER_BASES[0];
+      : (COVER_BASES.find((b) => b.id === selected) ?? COVER_BASES[0]);
+
+  const previewSrc = uploadPreview ?? active?.src ?? COVER_BASES[0].src;
+  const previewName = uploadPreview
+    ? alias || "Custom"
+    : alias || active?.name || "UNKNOWN";
 
   function continueWith(src: string, nextAlias: string) {
     saveBaseSrc(src);
@@ -38,26 +43,26 @@ export function BasePicker() {
   }
 
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden">
+    <section className="relative min-h-[100dvh] overflow-hidden pb-28 lg:pb-8">
       <CityAtmosphere intensity="soft" />
 
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-6xl flex-col px-6 py-8 sm:px-10">
+      <div className="relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-6xl flex-col px-4 py-6 sm:px-10 sm:py-8">
         <header className="flex items-end justify-between gap-4">
           <div>
-            <p className="text-xs tracking-[0.35em] text-teal uppercase">
+            <p className="text-[10px] tracking-[0.35em] text-teal uppercase sm:text-xs">
               Step 01 · Choose a face
             </p>
-            <h1 className="font-display mt-2 text-5xl text-sand sm:text-6xl">
+            <h1 className="font-display mt-2 text-4xl text-sand sm:text-6xl">
               Pick your cover
             </h1>
           </div>
-          <p className="hidden max-w-xs text-right text-sm text-sand-dim sm:block">
+          <p className="hidden max-w-xs text-right text-sm text-sand-dim md:block">
             Start from a Vice Coast base or upload your own shot.
           </p>
         </header>
 
-        <div className="mt-10 grid flex-1 gap-8 lg:grid-cols-[1fr_320px]">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+        <div className="mt-6 grid flex-1 gap-6 lg:mt-10 lg:grid-cols-[1fr_320px] lg:gap-8">
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-4">
             {COVER_BASES.map((base, index) => {
               const isActive = !uploadPreview && selected === base.id;
               return (
@@ -84,10 +89,12 @@ export function BasePicker() {
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-3">
-                    <p className="font-display text-2xl text-sand">{base.name}</p>
+                  <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3">
+                    <p className="font-display text-xl text-sand sm:text-2xl">
+                      {base.name}
+                    </p>
                     <p
-                      className="text-[11px] tracking-[0.18em] uppercase"
+                      className="text-[10px] tracking-[0.16em] uppercase sm:text-[11px]"
                       style={{ color: base.accent }}
                     >
                       {base.role}
@@ -98,11 +105,11 @@ export function BasePicker() {
             })}
           </div>
 
-          <aside className="flex flex-col border border-line bg-night/60 p-5 backdrop-blur-md">
+          <aside className="hidden flex-col border border-line bg-night/60 p-5 backdrop-blur-md lg:flex">
             <div className="aspect-[4/5] overflow-hidden border border-line bg-night-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={uploadPreview ?? active?.src ?? COVER_BASES[0].src}
+                src={previewSrc}
                 alt="Selected cover base"
                 className="h-full w-full object-cover"
               />
@@ -119,14 +126,6 @@ export function BasePicker() {
               />
             </label>
 
-            <input
-              ref={fileRef}
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={(e) => onUpload(e.target.files?.[0])}
-            />
-
             <button
               type="button"
               onClick={() => fileRef.current?.click()}
@@ -138,10 +137,7 @@ export function BasePicker() {
             <button
               type="button"
               onClick={() =>
-                continueWith(
-                  uploadPreview ?? active?.src ?? COVER_BASES[0].src,
-                  alias || active?.name || "UNKNOWN",
-                )
+                continueWith(previewSrc, alias || active?.name || "UNKNOWN")
               }
               className="mt-3 bg-sand px-4 py-4 text-sm font-semibold tracking-[0.18em] text-night uppercase transition hover:bg-white"
             >
@@ -150,6 +146,52 @@ export function BasePicker() {
           </aside>
         </div>
       </div>
+
+      {/* Mobile sticky action bar */}
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-night/95 px-4 py-3 backdrop-blur-md lg:hidden">
+        <div className="mx-auto flex max-w-6xl items-center gap-3">
+          <div className="h-14 w-11 shrink-0 overflow-hidden border border-line">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={previewSrc}
+              alt=""
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <input
+            value={alias}
+            onChange={(e) => setAlias(e.target.value)}
+            placeholder={previewName}
+            maxLength={18}
+            className="min-w-0 flex-1 border border-line bg-transparent px-3 py-2.5 text-sm text-sand outline-none placeholder:text-sand/35 focus:border-teal"
+            aria-label="Street alias"
+          />
+          <button
+            type="button"
+            onClick={() => fileRef.current?.click()}
+            className="shrink-0 border border-line px-2.5 py-2.5 text-[10px] tracking-[0.12em] text-sand-dim uppercase"
+          >
+            Upload
+          </button>
+          <button
+            type="button"
+            onClick={() =>
+              continueWith(previewSrc, alias || active?.name || "UNKNOWN")
+            }
+            className="shrink-0 bg-sand px-3 py-2.5 text-[10px] font-semibold tracking-[0.12em] text-night uppercase"
+          >
+            Forge
+          </button>
+        </div>
+      </div>
+
+      <input
+        ref={fileRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={(e) => onUpload(e.target.files?.[0])}
+      />
     </section>
   );
 }

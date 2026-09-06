@@ -64,23 +64,23 @@ export function RevealStage() {
     <section className="relative min-h-[100dvh] overflow-hidden">
       <CityAtmosphere />
 
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-6xl flex-col px-6 py-8 sm:px-10">
-        <header className="flex flex-wrap items-end justify-between gap-4">
+      <div className="relative z-10 mx-auto flex min-h-[100dvh] w-full max-w-6xl flex-col px-4 py-6 sm:px-10 sm:py-8">
+        <header className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs tracking-[0.35em] text-gold uppercase">
+            <p className="text-[10px] tracking-[0.35em] text-gold uppercase sm:text-xs">
               Step 03 · City drop
             </p>
-            <h1 className="font-display mt-2 text-5xl text-sand sm:text-6xl">
+            <h1 className="font-display mt-2 text-4xl text-sand sm:text-6xl">
               {alias} is live
             </h1>
           </div>
-          <div className="flex gap-2">
+          <div className="flex w-full gap-2 sm:w-auto">
             {SURFACES.map((item) => (
               <button
                 key={item}
                 type="button"
                 onClick={() => setSurface(item)}
-                className={`px-3 py-2 text-[11px] tracking-[0.2em] uppercase transition ${
+                className={`flex-1 px-3 py-2 text-[10px] tracking-[0.2em] uppercase transition sm:flex-none sm:text-[11px] ${
                   surface === item
                     ? "bg-sand text-night"
                     : "border border-line text-sand-dim hover:text-sand"
@@ -92,7 +92,7 @@ export function RevealStage() {
           </div>
         </header>
 
-        <div className="relative mt-8 flex flex-1 items-center justify-center py-6">
+        <div className="relative mt-6 flex flex-1 items-center justify-center py-4 sm:mt-8 sm:py-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={surface}
@@ -111,12 +111,12 @@ export function RevealStage() {
           </AnimatePresence>
         </div>
 
-        <footer className="flex flex-wrap items-center gap-3 border-t border-line pt-6">
+        <footer className="flex flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:flex-wrap sm:items-center sm:pt-6">
           <a
             href={tweetHref}
             target="_blank"
             rel="noreferrer"
-            className="bg-sand px-5 py-3 text-sm font-semibold tracking-[0.16em] text-night uppercase transition hover:bg-white"
+            className="bg-sand px-5 py-3 text-center text-sm font-semibold tracking-[0.16em] text-night uppercase transition hover:bg-white"
           >
             Share on X
           </a>
@@ -129,11 +129,11 @@ export function RevealStage() {
           </button>
           <Link
             href="/forge"
-            className="px-5 py-3 text-sm tracking-[0.16em] text-sand-dim uppercase transition hover:text-sand"
+            className="px-5 py-3 text-center text-sm tracking-[0.16em] text-sand-dim uppercase transition hover:text-sand"
           >
             Forge another
           </Link>
-          <p className="ml-auto text-xs tracking-[0.18em] text-sand-dim uppercase">
+          <p className="text-xs tracking-[0.18em] text-sand-dim uppercase sm:ml-auto">
             #BuiltWithImageEditor
           </p>
         </footer>
