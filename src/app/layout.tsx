@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "VICE FORGE — Cover Identity Studio",
   description:
     "Forge a GTA VI–inspired cover identity with Unlayer React Image Editor, then drop it across Vice Coast.",
+  applicationName: "VICE FORGE",
   openGraph: {
     title: "VICE FORGE",
     description:
