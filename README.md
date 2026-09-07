@@ -1,59 +1,38 @@
 # VICE FORGE
 
-GTA VI–inspired cover identity studio for the [Unlayer Build with React Image Editor Challenge](https://x.com/unlayer/status/2095499044072149504).
+A small GTA VI–inspired web app where you forge a cover identity, edit it in [Unlayer’s React Image Editor](https://github.com/unlayer/react-image-editor), and see it show up on a phone lock screen, billboard, and wanted poster.
 
-Forge a Vice Coast cover with [`@unlayer/react-image-editor`](https://github.com/unlayer/react-image-editor), then watch it hit a phone lock screen, highway billboard, and wanted poster.
+Built for Unlayer’s [Build with React Image Editor](https://x.com/unlayer/status/2095499044072149504) challenge.
 
-**Live:** [https://unlayer-five.vercel.app](https://unlayer-five.vercel.app)  
-**Repo:** [https://github.com/panditdhamdhere/Vice-Forge](https://github.com/panditdhamdhere/Vice-Forge)
+**Demo:** https://unlayer-five.vercel.app
 
-## Try it (30 seconds)
-
-1. Open the live app (or run locally below)
-2. Click **Forge your cover**
-3. Pick a base (or upload a face) and set an alias
-4. Edit with React Image Editor — filter, text, stickers, frame, draw
-5. Hit **Save** → watch the city drop → share with `#BuiltWithImageEditor`
-
-## Stack
-
-- Next.js 16 (App Router)
-- TypeScript
-- Tailwind CSS 4
-- Framer Motion
-- `@unlayer/react-image-editor`
-
-## Routes
-
-| Route | Purpose |
-|-------|---------|
-| `/` | Landing |
-| `/forge` | Pick base / upload |
-| `/forge/edit` | React Image Editor forge |
-| `/reveal` | Phone → billboard → wanted montage + share |
-
-## Develop
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Then open http://localhost:3000
 
-## Deploy
+## How it works
 
-```bash
-npx vercel --prod
-```
+1. Pick a base portrait or upload your own
+2. Customize it in the image editor (filters, text, stickers, frames, draw)
+3. Save — your cover drops into the city reveal
+4. Download or share it
 
-Or import this repo in the Vercel dashboard.
+## Stack
 
-## Challenge checklist
+- Next.js 16
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- `@unlayer/react-image-editor`
 
-- [x] GTA VI–inspired experience
-- [x] React Image Editor as a core loop
-- [x] Users edit / customize a visual
-- [x] Public GitHub repo
-- [x] Live deploy URL — https://unlayer-five.vercel.app
-- [ ] Submit form + share `#BuiltWithImageEditor`
+## Pages
+
+- `/` — landing
+- `/forge` — choose a face
+- `/forge/edit` — editor
+- `/reveal` — city drop + share
